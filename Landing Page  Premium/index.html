@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Tailwind CSS Premium - Vitor Zonho</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configuração avançada do Tailwind
+        tailwind.config = {
+            theme: {
+                extend: {
+                    // Cores customizadas para o tema
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a'
+                        },
+                        accent: {
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48'
+                        }
+                    },
+                    // Animações customizadas
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'slide-right': 'slideRight 0.8s ease-out forwards',
+                        'scale-up': 'scaleUp 0.6s ease-out forwards',
+                        'gradient-shift': 'gradientShift 8s ease-in-out infinite',
+                        'typewriter': 'typewriter 4s steps(40) infinite'
+                    },
+                    // Keyframes personalizados
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '33%': { transform: 'translateY(-20px) rotate(1deg)' },
+                            '66%': { transform: 'translateY(-10px) rotate(-1deg)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(60px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-60px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        scaleUp: {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        gradientShift: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' }
+                        },
+                        typewriter: {
+                            '0%': { width: '0' },
+                            '50%': { width: '100%' },
+                            '100%': { width: '0' }
+                        }
+                    },
+                    // Spacing customizado
+                    spacing: {
+                        '18': '4.5rem',
+                        '88': '22rem',
+                        '128': '32rem'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Gradientes avançados e efeitos customizados */
+        .bg-gradient-mesh {
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, #1e3a8a 0%, #3730a3 25%, #581c87 50%, #7c2d12 75%, #dc2626 100%);
+            background-size: 100% 100%;
+            animation: gradientShift 12s ease-in-out infinite;
+        }
+        
+        /* Efeito de vidro avançado */
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 8px 32px 0 rgba(31, 38, 135, 0.37),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Efeito neon */
+        .neon-glow {
+            text-shadow: 
+                0 0 5px currentColor,
+                0 0 10px currentColor,
+                0 0 15px currentColor,
+                0 0 20px currentColor;
+        }
+        
+        /* Card com efeito hover avançado */
+        .hover-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .hover-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 
+                0 32px 64px -12px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Loader customizado */
+        .spinner {
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-left: 2px solid #3b82f6;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Texto com efeito de máquina de escrever */
+        .typewriter-text {
+            border-right: 2px solid #3b82f6;
+            animation: typewriter 4s steps(40) infinite;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+        /* Parallax simples */
+        .parallax-slow {
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        /* Seleção customizada */
+        ::selection {
+            background: rgba(59, 130, 246, 0.3);
+            color: white;
+        }
+        
+        /* Scroll personalizado */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-gradient-mesh min-h-screen overflow-x-hidden">
+    <!-- Elementos de fundo decorativos -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <!-- Círculos flutuantes animados -->
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl animate-float" style="animation-delay: -6s;"></div>
+    </div>
+
+    <!-- Header avançado com efeito sticky -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/5 border-b border-white/10">
+        <nav class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo com efeito neon -->
+                <div class="text-white font-black text-2xl neon-glow">
+                    <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        TailwindCSS
+                    </span>
+                    <span class="text-white">.com.br</span>
+                </div>
+                
+                <!-- Menu desktop com indicadores -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#hero" class="group relative text-white/80 hover:text-white transition-all duration-300">
+                        Início
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#features" class="group relative text-white/80 hover:text-white transition-all duration-300">
+                        Recursos
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#pricing" class="group relative text-white/80 hover:text-white transition-all duration-300">
+                        Preços
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <button class="glass-morphism px-6 py-2 rounded-full text-white font-medium hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                        Entrar
+                    </button>
+                </div>
+                
+                <!-- Menu mobile button -->
+                <button class="lg:hidden glass-morphism p-2 rounded-lg" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Menu mobile dropdown -->
+            <div id="mobile-menu" class="hidden lg:hidden mt-4 glass-morphism rounded-xl p-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#hero" class="text-white/80 hover:text-white py-2 transition-colors">Início</a>
+                    <a href="#features" class="text-white/80 hover:text-white py-2 transition-colors">Recursos</a>
+                    <a href="#pricing" class="text-white/80 hover:text-white py-2 transition-colors">Preços</a>
+                    <button class="bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 px-4 rounded-lg font-medium">
+                        Entrar
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section com animações avançadas -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center px-6 py-20">
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <!-- Badge flutuante -->
+            <div class="inline-flex items-center glass-morphism px-4 py-2 rounded-full text-sm text-white/90 mb-8 animate-slide-up">
+                <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+                Novo: Módulo de Componentes Avançados
+            </div>
+            
+            <!-- Título principal com gradiente animado -->
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-8 animate-slide-up" style="animation-delay: 0.2s;">
+                <span class="block bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent leading-tight">
+                    Domine o
+                </span>
+                <span class="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent neon-glow leading-tight">
+                    Tailwind CSS
+                </span>
+                <span class="block text-white/90 text-2xl md:text-4xl lg:text-5xl mt-4 font-light">
+                    como um Profissional
+                </span>
+            </h1>
+            
+            <!-- Subtítulo com efeito typewriter -->
+            <div class="max-w-4xl mx-auto mb-12 animate-slide-up" style="animation-delay: 0.4s;">
+                <p class="text-xl md:text-2xl text-white/80 mb-4">
+                    Aprenda técnicas avançadas, componentes customizados e 
+                </p>
+                <p class="text-xl md:text-2xl text-blue-300 typewriter-text inline-block">
+                    construa interfaces que impressionam
+                </p>
+            </div>
+            
+            <!-- Botões de ação com efeitos avançados -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 animate-slide-up" style="animation-delay: 0.6s;">
+                <button onclick="scrollToSection('pricing')" class="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                    <span class="relative z-10 flex items-center">
+                        🚀 Começar Agora
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </button>
+                
+                <button onclick="playDemo()" class="group glass-morphism text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/10 transition-all duration-300 hover:scale-105 flex items-center">
+                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-3 group-hover:bg-white/30 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"></path>
+                        </svg>
+                    </div>
+                    Ver Demonstração
+                </button>
+            </div>
+            
+            <!-- Estatísticas impressionantes -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto animate-slide-up" style="animation-delay: 0.8s;">
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-white mb-2 counter" data-target="5000">7442</div>
+                    <div class="text-white/60 text-sm">Alunos Ativos</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-white mb-2 counter" data-target="98">98</div>
+                    <div class="text-white/60 text-sm">% Satisfação</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-white mb-2 counter" data-target="150">150</div>
+                    <div class="text-white/60 text-sm">Aulas Práticas</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-white mb-2 counter" data-target="34">34</div>
+                    <div class="text-white/60 text-sm">Exemplos Práticos</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Seta indicativa animada -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Seção de Features com layout avançado -->
+    <section id="features" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <!-- Título da seção -->
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                    Recursos
+                    <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        Avançados
+                    </span>
+                </h2>
+                <p class="text-xl text-white/70 max-w-3xl mx-auto">
+                    Descubra funcionalidades que transformarão sua forma de desenvolver interfaces
+                </p>
+            </div>
+            
+            <!-- Grid de features com cards avançados -->
+            <div class="grid lg:grid-cols-3 gap-8 mb-20">
+                <!-- Feature 1 - Componentes Customizados -->
+                <div class="group hover-card glass-morphism p-8 rounded-3xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Componentes Avançados</h3>
+                    <p class="text-white/70 mb-6">
+                        Aprenda a criar componentes reutilizáveis com configurações avançadas do Tailwind
+                    </p>
+                    <div class="flex items-center text-blue-400 font-semibold group-hover:text-blue-300 transition-colors">
+                        <span>Explorar</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Feature 2 - Animações -->
+                <div class="group hover-card glass-morphism p-8 rounded-3xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Animações CSS</h3>
+                    <p class="text-white/70 mb-6">
+                        Domine técnicas avançadas de animação e transições que encantam usuários
+                    </p>
+                    <div class="flex items-center text-purple-400 font-semibold group-hover:text-purple-300 transition-colors">
+                        <span>Explorar</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Feature 3 - Layouts Complexos -->
+                <div class="group hover-card glass-morphism p-8 rounded-3xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-pink-400 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Layouts Complexos</h3>
+                    <p class="text-white/70 mb-6">
+                        Grid avançado, flexbox profissional e layouts responsivos de alta qualidade
+                    </p>
+                    <div class="flex items-center text-pink-400 font-semibold group-hover:text-pink-300 transition-colors">
+                        <span>Explorar</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Seção de demonstração de código -->
+            <div class="glass-morphism rounded-3xl p-8 lg:p-12">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Lado esquerdo - Informações -->
+                    <div>
+                        <h3 class="text-3xl lg:text-4xl font-bold text-white mb-6">
+                            Código
+                            <span class="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+                                Profissional
+                            </span>
+                        </h3>
+                        <p class="text-white/70 text-lg mb-8">
+                            Veja exemplos reais de código que você aprenderá a escrever. 
+                            Desde configurações avançadas até componentes complexos.
+                        </p>
+                        
+                        <!-- Lista de tecnologias -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <span class="text-white">Tailwind Config Avançado</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                                <span class="text-white">Custom Utilities</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                <span class="text-white">Plugin Development</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Lado direito - Mock de código -->
+                    <div class="bg-gray-900/50 rounded-2xl p-6 border border-gray-700/50">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <span class="text-gray-400 text-sm">tailwind.config.js</span>
+                        </div>
+                        <div class="font-mono text-sm space-y-2">
+                            <div class="text-blue-400">module.exports = {</div>
+                            <div class="text-white ml-4">theme: {</div>
+                            <div class="text-white ml-8">extend: {</div>
+                            <div class="text-purple-400 ml-12">animation: {</div>
+                            <div class="text-green-400 ml-16">'float': 'float 6s ease-in-out infinite',</div>
+                            <div class="text-green-400 ml-16">'glow': 'glow 2s ease-in-out infinite',</div>
+                            <div class="text-purple-400 ml-12">}</div>
+                            <div class="text-white ml-8">}</div>
+                            <div class="text-white ml-4">}</div>
+                            <div class="text-blue-400">}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Preços Premium -->
+    <section id="pricing" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Título da seção -->
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                    Escolha Seu
+                    <span class="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+                        Plano
+                    </span>
+                </h2>
+                <p class="text-xl text-white/70 max-w-3xl mx-auto">
+                    Opções flexíveis para todos os níveis de aprendizado
+                </p>
+            </div>
+            
+            <!-- Cards de preço -->
+            <div class="grid lg:grid-cols-3 gap-8 mb-16">
+                <!-- Plano Básico -->
+                <div class="hover-card glass-morphism p-8 rounded-3xl relative">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-2">Básico</h3>
+                        <p class="text-white/60 mb-6">Perfeito para iniciantes</p>
+                        <div class="text-5xl font-bold text-white mb-2">
+                            R$ 197
+                        </div>
+                        <div class="text-white/60">pagamento único</div>
+                    </div>
+                    
+                    <!-- Features do plano básico -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">40 aulas fundamentais</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">5 projetos práticos</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">Certificado de conclusão</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">Suporte via email</span>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-gradient-to-r from-gray-600 to-gray-700 text-white py-4 rounded-2xl font-bold hover:from-gray-700 hover:to-gray-800 transition-all duration-300 hover:scale-105">
+                        Começar Agora
+                    </button>
+                </div>
+                
+                <!-- Plano Pro (Destaque) -->
+                <div class="hover-card glass-morphism p-8 rounded-3xl relative border-2 border-blue-400/50">
+                    <!-- Badge de destaque -->
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <div class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-2 rounded-full text-sm font-bold">
+                            🔥 MAIS POPULAR
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mb-8 pt-4">
+                        <h3 class="text-2xl font-bold text-white mb-2">Pro</h3>
+                        <p class="text-white/60 mb-6">Para desenvolvedores sérios</p>
+                        <div class="text-5xl font-bold text-white mb-2">
+                            R$ 497
+                        </div>
+                        <div class="text-white/60">pagamento único</div>
+                    </div>
+                    
+                    <!-- Features do plano pro -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">Tudo do plano Básico</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">100+ aulas avançadas</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">15 projetos profissionais</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">Mentoria 1-on-1 (2h)</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">Acesso à comunidade VIP</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">Templates premium</span>
+                        </div>
+                    </div>
+                    
+                    <button onclick="openModal()" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-2xl font-bold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg">
+                        🚀 Escolher Pro
+                    </button>
+                </div>
+                
+                <!-- Plano Enterprise -->
+                <div class="hover-card glass-morphism p-8 rounded-3xl relative">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-2">Enterprise</h3>
+                        <p class="text-white/60 mb-6">Para equipes e empresas</p>
+                        <div class="text-5xl font-bold text-white mb-2">
+                            R$ 997
+                        </div>
+                        <div class="text-white/60">pagamento único</div>
+                    </div>
+                    
+                    <!-- Features do plano enterprise -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">Tudo do plano Pro</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">Licença para equipe (até 10)</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">Workshop personalizado</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">Suporte prioritário 24/7</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white/80">Code review personalizado</span>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white py-4 rounded-2xl font-bold hover:from-yellow-600 hover:to-orange-600 transition-all duration-300 hover:scale-105">
+                        Contatar Vendas
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Garantia -->
+            <div class="text-center glass-morphism p-8 rounded-3xl">
+                <div class="flex items-center justify-center mb-4">
+                    <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center">
+                        <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2">Garantia de 30 Dias</h3>
+                <p class="text-white/70 max-w-2xl mx-auto">
+                    Se você não ficar 100% satisfeito com o curso, devolvemos seu dinheiro. 
+                    Sem perguntas, sem complicações.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Formulário Premium -->
+    <div id="signup-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="glass-morphism max-w-2xl w-full rounded-3xl p-8 relative animate-scale-up">
+            <!-- Botão de fechar -->
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-white/60 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <!-- Cabeçalho do modal -->
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-bold text-white mb-2">
+                    🚀 Comece Sua Jornada
+                </h3>
+                <p class="text-white/70">
+                    Preencha os dados abaixo e receba acesso imediato ao curso
+                </p>
+                
+                <!-- Oferta especial -->
+                <div class="mt-6 inline-flex items-center glass-morphism px-4 py-2 rounded-full">
+                    <span class="w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse"></span>
+                    <span class="text-white/90 text-sm">Oferta expira em: </span>
+                    <span id="countdown" class="text-red-400 font-bold ml-1">15:30</span>
+                </div>
+            </div>
+            
+            <!-- Formulário avançado -->
+            <form id="premium-form" class="space-y-6" onsubmit="handlePremiumSubmit(event)">
+                <!-- Grid de campos -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Nome -->
+                    <div class="space-y-2">
+                        <label class="block text-white font-semibold" for="modal-nome">
+                            Nome Completo *
+                        </label>
+                        <input 
+                            type="text" 
+                            id="modal-nome" 
+                            name="nome"
+                            required
+                            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/50 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                            placeholder="Seu nome completo"
+                        >
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="space-y-2">
+                        <label class="block text-white font-semibold" for="modal-email">
+                            E-mail *
+                        </label>
+                        <input 
+                            type="email" 
+                            id="modal-email" 
+                            name="email"
+                            required
+                            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/50 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                            placeholder="seu@email.com"
+                        >
+                    </div>
+                </div>
+                
+                <!-- Telefone -->
+                <div class="space-y-2">
+                    <label class="block text-white font-semibold" for="modal-telefone">
+                        WhatsApp *
+                    </label>
+                    <input 
+                        type="tel" 
+                        id="modal-telefone" 
+                        name="telefone"
+                        required
+                        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/50 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                        placeholder="(11) 99999-9999"
+                    >
+                </div>
+                
+                <!-- Experiência -->
+                <div class="space-y-2">
+                    <label class="block text-white font-semibold" for="experiencia">
+                        Seu nível de experiência
+                    </label>
+                    <select 
+                        id="experiencia" 
+                        name="experiencia"
+                        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    >
+                        <option value="" class="text-gray-900">Selecione uma opção</option>
+                        <option value="iniciante" class="text-gray-900">Iniciante - Nunca usei Tailwind</option>
+                        <option value="basico" class="text-gray-900">Básico - Já experimentei</option>
+                        <option value="intermediario" class="text-gray-900">Intermediário - Uso regularmente</option>
+                        <option value="avancado" class="text-gray-900">Avançado - Quero me especializar</option>
+                    </select>
+                </div>
+                
+                <!-- Objetivos -->
+                <div class="space-y-2">
+                    <label class="block text-white font-semibold">
+                        Seus objetivos (marque todos que se aplicam)
+                    </label>
+                    <div class="grid md:grid-cols-2 gap-3">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" name="objetivos[]" value="freelancer" class="w-4 h-4 text-blue-600 border-white/20 rounded focus:ring-blue-500 bg-white/10">
+                            <span class="text-white/80">Trabalhar como freelancer</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" name="objetivos[]" value="emprego" class="w-4 h-4 text-blue-600 border-white/20 rounded focus:ring-blue-500 bg-white/10">
+                            <span class="text-white/80">Conseguir um emprego</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" name="objetivos[]" value="projetos" class="w-4 h-4 text-blue-600 border-white/20 rounded focus:ring-blue-500 bg-white/10">
+                            <span class="text-white/80">Melhorar meus projetos</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" name="objetivos[]" value="empresa" class="w-4 h-4 text-blue-600 border-white/20 rounded focus:ring-blue-500 bg-white/10">
+                            <span class="text-white/80">Aplicar na empresa</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Termos -->
+                <div class="flex items-start space-x-3">
+                    <input 
+                        type="checkbox" 
+                        id="modal-termos" 
+                        name="termos"
+                        required
+                        class="mt-1 w-4 h-4 text-blue-600 border-white/20 rounded focus:ring-blue-500 bg-white/10"
+                    >
+                    <label for="modal-termos" class="text-white/80 text-sm">
+                        Concordo em receber comunicações sobre o curso e aceito os 
+                        <a href="#" class="text-blue-400 hover:underline">termos de uso</a> e 
+                        <a href="#" class="text-blue-400 hover:underline">política de privacidade</a>
+                    </label>
+                </div>
+                
+                <!-- Botão de envio -->
+                <button 
+                    type="submit"
+                    class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-4 px-6 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-xl flex items-center justify-center space-x-2"
+                >
+                    <span>🚀 GARANTIR MINHA VAGA AGORA</span>
+                    <div id="form-spinner" class="hidden w-5 h-5 border-2 border-white/20 border-l-white rounded-full spinner"></div>
+                </button>
+                
+                <!-- Informações adicionais -->
+                <div class="text-center space-y-2 pt-4 border-t border-white/10">
+                    <p class="text-green-400 text-sm flex items-center justify-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                        Pagamento 100% seguro e criptografado
+                    </p>
+                    <p class="text-white/60 text-sm">
+                        ✅ Acesso imediato após confirmação do pagamento
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Seção de Depoimentos Avançada -->
+    <section class="py-24 px-6 bg-black/20">
+        <div class="max-w-7xl mx-auto">
+            <!-- Título -->
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                    Histórias de
+                    <span class="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+                        Sucesso
+                    </span>
+                </h2>
+                <p class="text-xl text-white/70">
+                    Veja como nossos alunos transformaram suas carreiras
+                </p>
+            </div>
+            
+            <!-- Grid de depoimentos -->
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Depoimento 1 -->
+                <div class="glass-morphism p-8 rounded-3xl hover-card">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            AK
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Ana Karoline</h4>
+                            <p class="text-white/60 text-sm">Frontend Developer</p>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-4 flex">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p class="text-white/80 mb-6 italic">
+                        "Depois do curso consegui uma promoção na empresa. O conhecimento avançado 
+                        de Tailwind me destacou da equipe e agora lidero os projetos de UI."
+                    </p>
+                    <div class="text-green-400 font-semibold text-sm">
+                        💰 Aumento salarial: +40%
+                    </div>
+                </div>
+                
+                <!-- Depoimento 2 -->
+                <div class="glass-morphism p-8 rounded-3xl hover-card">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            RS
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Roberto Silva</h4>
+                            <p class="text-white/60 text-sm">Freelancer</p>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-4 flex">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p class="text-white/80 mb-6 italic">
+                        "Comecei a cobrar 3x mais pelos meus projetos depois que aprendi as técnicas 
+                        avançadas. Meus clientes ficam impressionados com a qualidade."
+                    </p>
+                    <div class="text-green-400 font-semibold text-sm">
+                        💼 Renda mensal: R$ 12.000+
+                    </div>
+                </div>
+                
+                <!-- Depoimento 3 -->
+                <div class="glass-morphism p-8 rounded-3xl hover-card">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            MF
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Maria Fernanda</h4>
+                            <p class="text-white/60 text-sm">UX/UI Designer</p>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-4 flex">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p class="text-white/80 mb-6 italic">
+                        "Consegui meu primeiro emprego como desenvolvedora front-end apenas 2 meses 
+                        após terminar o curso. O portfólio que criei foi decisivo!"
+                    </p>
+                    <div class="text-green-400 font-semibold text-sm">
+                        🎯 Contratada em 60 dias
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+                        <!-- Footer Premium -->
+    <footer class="py-16 px-6 border-t border-white/10">
+        <div class="max-w-7xl mx-auto">
+            <!-- Grid principal do footer -->
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <!-- Coluna 1 - Marca -->
+                <div class="lg:col-span-2">
+                    <div class="text-white font-black text-3xl mb-4 neon-glow">
+                        <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                            TailwindCSS
+                        </span>
+                        <span class="text-white">.com.br</span>
+                    </div>
+                    <p class="text-white/70 mb-6 max-w-md">
+                        A plataforma mais completa para dominar o Tailwind CSS e se tornar 
+                        um desenvolvedor frontend de elite.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 glass-morphism rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                    
+                        <a href="#" class="w-10 h-10 glass-morphism rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19.615 3.184c-.74.327-1.537.548-2.373.647a4.152 4.152 0 0 0 1.82-2.29 8.312 8.312 0 0 1-2.63 1.004A4.141 4.141 0 0 0 13.09 2c-2.28 0-4.13 1.85-4.13 4.13 0 .323.036.638.106.94-3.43-.172-6.47-1.815-8.51-4.31a4.105 4.105 0 0 0-.56 2.077c0 1.435.73 2.7 1.84 3.44a4.125 4.125 0 0 1-1.87-.516v.05c0 2.003 1.424 3.675 3.31 4.056a4.18 4.18 0 0 1-1.86.07c.525 1.638 2.045 2.83 3.85 2.865a8.31 8.31 0 0 1-5.15 1.77c-.335 0-.666-.02-.99-.058a11.74 11.74 0 0 0 6.35 1.86c7.62 0 11.78-6.31 11.78-11.78 0-.18-.004-.36-.012-.54a8.41 8.41 0 0 0 2.06-2.14z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna 2 - Links rápidos -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Navegação</h4>
+                    <ul class="space-y-2 text-white/70 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Início</a></li>
+                        <li><a href="#" class="hover:text-white transition">Documentação</a></li>
+                        <li><a href="#" class="hover:text-white transition">Templates</a></li>
+                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contato</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3 - Recursos -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Recursos</h4>
+                    <ul class="space-y-2 text-white/70 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Guia Tailwind CSS</a></li>
+                        <li><a href="#" class="hover:text-white transition">Landing Pages</a></li>
+                        <li><a href="#" class="hover:text-white transition">Componentes</a></li>
+                        <li><a href="#" class="hover:text-white transition">Dark Mode</a></li>
+                        <li><a href="#" class="hover:text-white transition">Responsividade</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Linha final -->
+            <div class="flex flex-col md:flex-row justify-between items-center text-white/50 text-sm border-t border-white/10 pt-6">
+                <p>© 2025 TailwindCSS.com.br. Todos os direitos reservados.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition">Política de Privacidade</a>
+                    <a href="#" class="hover:text-white transition">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</html>
+      

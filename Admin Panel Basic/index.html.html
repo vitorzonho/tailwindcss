@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Administrativo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-md hidden md:block">
+      <div class="p-6">
+        <h1 class="text-2xl font-bold text-blue-600">Painel</h1>
+      </div>
+      <nav class="px-6">
+        <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-100 hover:text-blue-600">Dashboard</a>
+        <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-100 hover:text-blue-600">Usuários</a>
+        <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-100 hover:text-blue-600">Configurações</a>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Top bar -->
+      <header class="flex items-center justify-between bg-white p-4 shadow-md">
+        <div class="flex items-center space-x-4">
+          <button class="md:hidden text-gray-500 focus:outline-none">
+            <!-- Menu icon -->
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+          <input type="text" placeholder="Pesquisar..." class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div class="flex items-center space-x-4">
+          <span class="text-gray-600">Olá, Admin</span>
+          <img src="https://i.pravatar.cc/40" alt="Avatar" class="w-10 h-10 rounded-full" />
+        </div>
+      </header>
+
+      <!-- Content -->
+      <main class="p-6 overflow-auto">
+        <!-- Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+          <div class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="text-sm font-medium text-gray-500">Usuários</h2>
+                <p class="text-2xl font-bold text-gray-800">1.200</p>
+              </div>
+              <div class="bg-blue-100 text-blue-600 p-2 rounded-full">
+                <!-- User icon -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A4 4 0 0112 15a4 4 0 016.879 2.804M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <!-- Outros cards semelhantes -->
+          <div class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="text-sm font-medium text-gray-500">Vendas</h2>
+                <p class="text-2xl font-bold text-gray-800">R$ 24.000</p>
+              </div>
+              <div class="bg-green-100 text-green-600 p-2 rounded-full">
+                <!-- Sales icon -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18M3 12h18"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="text-sm font-medium text-gray-500">Pedidos</h2>
+                <p class="text-2xl font-bold text-gray-800">320</p>
+              </div>
+              <div class="bg-yellow-100 text-yellow-600 p-2 rounded-full">
+                <!-- Orders icon -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="text-sm font-medium text-gray-500">Visitantes</h2>
+                <p class="text-2xl font-bold text-gray-800">5.000</p>
+              </div>
+              <div class="bg-purple-100 text-purple-600 p-2 rounded-full">
+                <!-- Visitors icon -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20l9-5-9-5-9 5 9 5z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabela -->
+        <div class="bg-white p-4 rounded-lg shadow">
+          <h2 class="text-lg font-semibold mb-4">Últimos Pedidos</h2>
+          <div class="overflow-x-auto">
+            <table class="min-w-full">
+              <thead>
+                <tr>
+                  <th class="px-4 py-2 text-left text-sm font-medium text-gray-500">#ID</th>
+                  <th class="px-4 py-2 text-left text-sm font-medium text-gray-500">Cliente</th>
+                  <th class="px-4 py-2 text-left text-sm font-medium text-gray-500">Valor</th>
+                  <th class="px-4 py-2 text-left text-sm font-medium text-gray-500">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t">
+                  <td class="px-4 py-2">#001</td>
+                  <td class="px-4 py-2">João Silva</td>
+                  <td class="px-4 py-2">R$ 500</td>
+                  <td class="px-4 py-2">
+                    <span class="text-sm text-green-600 bg-green-100 px-2 py-1 rounded-full">Pago</span>
+                  </td>
+                </tr>
+                <tr class="border-t">
+                  <td class="px-4 py-2">#002</td>
+                  <td class="px-4 py-2">Maria Oliveira</td>
+                  <td class="px-4 py-2">R$ 750</td>
+                  <td class="px-4 py-2">
+                    <span class="text-sm text-yellow-600 bg-yellow-100 px-2 py-1 rounded-full">Pendente</span>
+                  </td>
+                </tr>
+                <tr class="border-t">
+                  <td class="px-4 py-2">#003</td>
+                  <td class="px-4 py-2">Carlos Souza</td>
+                  <td class="px-4 py-2">R$ 1.200</td>
+                  <td class="px-4 py-2">
+                    <span class="text-sm text-red-600 bg-red-100 px-2 py-1 rounded-full">Cancelado</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

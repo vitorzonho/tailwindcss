@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Tailwind CSS - Vitor Zonho</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Animações personalizadas */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        /* Gradiente personalizado para o fundo */
+        .bg-gradient-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        /* Efeito glassmorphism */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gradient-custom min-h-screen">
+    <!-- Header com navegação -->
+    <header class="py-6 px-4">
+        <nav class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="text-white font-bold text-2xl">
+                TailwindCSS.com.br
+            </div>
+            <div class="hidden md:flex space-x-6 text-white">
+                <a href="#curso" class="hover:text-purple-200 transition-colors">Curso</a>
+                <a href="#sobre" class="hover:text-purple-200 transition-colors">Sobre</a>
+                <a href="#contato" class="hover:text-purple-200 transition-colors">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Seção Hero Principal -->
+    <section class="py-20 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <!-- Título principal com animação -->
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 fade-in-up">
+                Domine o
+                <span class="bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent">
+                    Tailwind CSS
+                </span>
+            </h1>
+            
+            <!-- Subtítulo -->
+            <p class="text-xl md:text-2xl text-purple-100 mb-8 max-w-3xl mx-auto fade-in-up" style="animation-delay: 0.2s;">
+                Aprenda a criar interfaces modernas e responsivas com o framework CSS mais popular do mercado
+            </p>
+            
+            <!-- Badges de benefícios -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12 fade-in-up" style="animation-delay: 0.4s;">
+                <span class="glass-effect px-4 py-2 rounded-full text-white text-sm">
+                    ⚡ Desenvolvimento Rápido
+                </span>
+                <span class="glass-effect px-4 py-2 rounded-full text-white text-sm">
+                    📱 Design Responsivo
+                </span>
+                <span class="glass-effect px-4 py-2 rounded-full text-white text-sm">
+                    🎨 Interface Moderna
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Conteúdo e Formulário -->
+    <section class="py-16 px-4" id="curso">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Lado esquerdo - Informações do curso -->
+                <div class="text-white">
+                    <h2 class="text-4xl font-bold mb-6">
+                        Por que escolher nosso curso?
+                    </h2>
+                    
+                    <!-- Lista de benefícios -->
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <span class="text-purple-900 font-bold">✓</span>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Método Prático e Objetivo</h3>
+                                <p class="text-purple-100">Aprenda construindo projetos reais do zero ao avançado</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <span class="text-purple-900 font-bold">✓</span>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Suporte Personalizado</h3>
+                                <p class="text-purple-100">Tire suas dúvidas diretamente com o instrutor</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <span class="text-purple-900 font-bold">✓</span>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Certificado de Conclusão</h3>
+                                <p class="text-purple-100">Comprove suas habilidades no mercado de trabalho</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Autor -->
+                    <div class="mt-8 p-6 glass-effect rounded-xl">
+                        <h4 class="font-semibold text-lg mb-2">Instrutor: Nome do instrutor</h4>
+                        <p class="text-purple-100 text-sm">
+                            Descriçao do instrutor, ex: Desenvolvedor Frontend especialista em Tailwind CSS com mais de 5 anos de experiência criando interfaces modernas e eficientes.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Lado direito - Formulário de inscrição -->
+                <div class="lg:pl-8">
+                    <div class="bg-white rounded-2xl shadow-2xl p-8 float-animation">
+                        <!-- Cabeçalho do formulário -->
+                        <div class="text-center mb-8">
+                            <h3 class="text-3xl font-bold text-gray-800 mb-2">
+                                Comece Agora!
+                            </h3>
+                            <p class="text-gray-600">
+                                Inscreva-se e receba acesso imediato ao curso
+                            </p>
+                            
+                            <!-- Preço em destaque -->
+                            <div class="mt-4 p-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white">
+                                <div class="text-sm opacity-75 line-through">De R$ 497</div>
+                                <div class="text-3xl font-bold">R$ 297</div>
+                                <div class="text-sm">Oferta por tempo limitado!</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Formulário -->
+                        <form class="space-y-4" onsubmit="handleFormSubmit(event)">
+                            <!-- Campo Nome -->
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2" for="nome">
+                                    Nome completo
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="nome" 
+                                    name="nome"
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all"
+                                    placeholder="Digite seu nome completo"
+                                >
+                            </div>
+                            
+                            <!-- Campo Email -->
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2" for="email">
+                                    E-mail
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email"
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all"
+                                    placeholder="seu@email.com"
+                                >
+                            </div>
+                            
+                            <!-- Campo Telefone -->
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2" for="telefone">
+                                    WhatsApp
+                                </label>
+                                <input 
+                                    type="tel" 
+                                    id="telefone" 
+                                    name="telefone"
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all"
+                                    placeholder="(11) 99999-9999"
+                                >
+                            </div>
+                            
+                            <!-- Checkbox de aceite -->
+                            <div class="flex items-start space-x-3">
+                                <input 
+                                    type="checkbox" 
+                                    id="aceite" 
+                                    name="aceite"
+                                    required
+                                    class="mt-1 w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
+                                >
+                                <label for="aceite" class="text-sm text-gray-600">
+                                    Concordo em receber informações sobre o curso e aceito os 
+                                    <a href="#" class="text-purple-600 hover:underline">termos de uso</a>
+                                </label>
+                            </div>
+                            
+                            <!-- Botão de submissão -->
+                            <button 
+                                type="submit"
+                                class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-4 px-6 rounded-lg hover:from-purple-700 hover:to-pink-700 transform hover:scale-105 transition-all duration-200 shadow-lg"
+                            >
+                                🚀 QUERO ME INSCREVER AGORA
+                            </button>
+                            
+                            <!-- Garantia -->
+                            <div class="text-center mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
+                                <div class="text-green-800 font-semibold text-sm">
+                                    ✅ Garantia de 7 dias ou seu dinheiro de volta
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de depoimentos/social proof -->
+    <section class="py-16 px-4 bg-black bg-opacity-20">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-white mb-12">
+                O que nossos alunos dizem
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Depoimento 1 -->
+                <div class="glass-effect p-6 rounded-xl text-white">
+                    <div class="text-yellow-400 mb-3">⭐⭐⭐⭐⭐</div>
+                    <p class="mb-4 text-sm">
+                        "Curso incrível! Consegui dominar o Tailwind em poucas semanas e já estou aplicando no meu trabalho."
+                    </p>
+                    <div class="font-semibold">- Fulana Silva</div>
+                </div>
+                
+                <!-- Depoimento 2 -->
+                <div class="glass-effect p-6 rounded-xl text-white">
+                    <div class="text-yellow-400 mb-3">⭐⭐⭐⭐⭐</div>
+                    <p class="mb-4 text-sm">
+                        "Melhor investimento que fiz! O professor explica de forma muito clara e prática."
+                    </p>
+                    <div class="font-semibold">- Fulano Santos</div>
+                </div>
+                
+                <!-- Depoimento 3 -->
+                <div class="glass-effect p-6 rounded-xl text-white">
+                    <div class="text-yellow-400 mb-3">⭐⭐⭐⭐⭐</div>
+                    <p class="mb-4 text-sm">
+                        "Agora consigo criar layouts responsivos muito mais rápido. Recomendo!"
+                    </p>
+                    <div class="font-semibold">- Ciclana Oliveira</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 text-center text-purple-200">
+        <div class="max-w-4xl mx-auto">
+            <p class="mb-4">
+                © 2025 TailwindCSS.com.br - Todos os direitos reservados
+            </p>
+            <p class="text-sm">
+                Desenvolvido com ❤️ por Vitor Zonho em tailwindcss.com.br
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Função para lidar com o envio do formulário
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            // Coleta os dados do formulário
+            const formData = new FormData(event.target);
+            const dados = {
+                nome: formData.get('nome'),
+                email: formData.get('email'),
+                telefone: formData.get('telefone'),
+                aceite: formData.get('aceite')
+            };
+            
+            // Simula o envio (aqui você integraria com sua API)
+            console.log('Dados do formulário:', dados);
+            
+            // Feedback visual para o usuário
+            const button = event.target.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '⏳ Processando...';
+            button.disabled = true;
+            
+            // Simula processamento
+            setTimeout(() => {
+                alert('Inscrição realizada com sucesso! Você receberá um e-mail com as instruções de acesso.');
+                button.innerHTML = originalText;
+                button.disabled = false;
+                event.target.reset(); // Limpa o formulário
+            }, 2000);
+        }
+        
+        // Máscara para o campo de telefone
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length >= 11) {
+                value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+            } else if (value.length >= 7) {
+                value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+            } else if (value.length >= 3) {
+                value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+            } else if (value.length >= 1) {
+                value = value.replace(/(\d{0,2})/, '($1');
+            }
+            
+            e.target.value = value;
+        });
+        
+        // Animação de scroll suave para links âncora
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>]
