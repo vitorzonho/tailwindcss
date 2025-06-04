@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Painel Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/charts.js"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+
+  <!-- Sidebar -->
+  <div id="sidebar-container"></div>
+
+  <!-- Conteúdo principal -->
+  <main class="lg:ml-64 p-6">
+    <h1 class="text-2xl font-bold mb-6">Dashboard</h1>
+
+    <!-- Cards de estatísticas -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      <div class="bg-white dark:bg-gray-800 p-6 rounded shadow">
+        <h2 class="text-lg font-semibold mb-2">Novos Usuários</h2>
+        <p class="text-3xl font-bold">132</p>
+      </div>
+      <div class="bg-white dark:bg-gray-800 p-6 rounded shadow">
+        <h2 class="text-lg font-semibold mb-2">Receita</h2>
+        <p class="text-3xl font-bold">R$ 9.320</p>
+      </div>
+      <div class="bg-white dark:bg-gray-800 p-6 rounded shadow">
+        <h2 class="text-lg font-semibold mb-2">Atendimentos</h2>
+        <p class="text-3xl font-bold">241</p>
+      </div>
+    </div>
+
+    <!-- Gráfico -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded shadow">
+      <h2 class="text-lg font-semibold mb-4">Vendas nos últimos 6 meses</h2>
+      <canvas id="salesChart" height="100"></canvas>
+    </div>
+  </main>
+
+  <script>
+    // Inserção dos componentes
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('navbar-container').innerHTML = data);
+
+    fetch('sidebar.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('sidebar-container').innerHTML = data);
+  </script>
+</body>
+</html>

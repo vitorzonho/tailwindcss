@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usuários - Painel Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+  <div class="min-h-screen flex flex-col">
+    <header class="bg-white dark:bg-gray-800 shadow p-4">
+      <h1 class="text-xl font-bold">Lista de Usuários</h1>
+    </header>
+
+    <main class="flex-1 p-6">
+      <div class="overflow-x-auto">
+        <table class="min-w-full table-auto border border-gray-200 dark:border-gray-700">
+          <thead class="bg-gray-200 dark:bg-gray-700">
+            <tr>
+              <th class="px-4 py-2 text-left text-sm font-semibold">Nome</th>
+              <th class="px-4 py-2 text-left text-sm font-semibold">Email</th>
+              <th class="px-4 py-2 text-left text-sm font-semibold">Status</th>
+              <th class="px-4 py-2 text-left text-sm font-semibold">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-gray-200 dark:border-gray-700">
+              <td class="px-4 py-2">João Silva</td>
+              <td class="px-4 py-2">joao@email.com</td>
+              <td class="px-4 py-2">
+                <span class="inline-block px-2 py-1 text-xs bg-green-100 text-green-800 rounded">Ativo</span>
+              </td>
+              <td class="px-4 py-2 space-x-2">
+                <button class="text-blue-500 hover:underline text-sm">Editar</button>
+                <button class="text-red-500 hover:underline text-sm">Excluir</button>
+              </td>
+            </tr>
+            <tr class="border-t border-gray-200 dark:border-gray-700">
+              <td class="px-4 py-2">Maria Souza</td>
+              <td class="px-4 py-2">maria@email.com</td>
+              <td class="px-4 py-2">
+                <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded">Pendente</span>
+              </td>
+              <td class="px-4 py-2 space-x-2">
+                <button class="text-blue-500 hover:underline text-sm">Editar</button>
+                <button class="text-red-500 hover:underline text-sm">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

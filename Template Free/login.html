@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - TailwindCSS Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div class="flex items-center justify-center min-h-screen px-4">
+      <div class="bg-white dark:bg-gray-800 rounded shadow-lg p-8 w-full max-w-md">
+        <div class="text-center mb-6">
+          <h1 class="text-2xl font-bold text-blue-500">TailwindCSS<span class="text-white">.pro</span></h1>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Acesse o painel administrativo</p>
+        </div>
+        <form action="#" method="POST" class="space-y-4">
+          <div>
+            <label for="email" class="block text-sm font-medium">Email</label>
+            <input type="email" id="email" name="email" required class="mt-1 w-full px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-sm" />
+          </div>
+          <div>
+            <label for="password" class="block text-sm font-medium">Senha</label>
+            <input type="password" id="password" name="password" required class="mt-1 w-full px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-sm" />
+          </div>
+          <div class="flex items-center justify-between">
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox text-blue-500" />
+              <span class="ml-2 text-sm">Lembrar-me</span>
+            </label>
+            <a href="#" class="text-sm text-blue-500 hover:underline">Esqueceu a senha?</a>
+          </div>
+          <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded font-medium transition-colors">Entrar</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

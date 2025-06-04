@@ -1,0 +1,28 @@
+template-premium/
+├── index.html                  # Dashboard principal
+├── login.html                 # Tela de login
+├── users.html                 # Exemplo de listagem de usuários
+├── settings.html              # Página de configurações
+│
+├── css/
+│   └── styles.css             # Estilo com @apply e ajustes visuais
+│
+├── js/
+│   ├── main.js                # Dark mode, toggles, dropdowns
+│   └── charts.js             # Setup de gráficos (ex: Chart.js)
+│
+├── components/
+│   ├── navbar.html
+│   ├── sidebar.html
+│   ├── footer.html
+│   └── cards.html            # Cards reutilizáveis
+│
+├── img/
+│   ├── logo.svg
+│   └── user-avatar.png
+│
+├── fonts/                     # (opcional: fontes personalizadas)
+│
+├── tailwind.config.js        # Configurações personalizadas
+├── README.md                 # Instruções de uso
+└── LICENSE                   # (ex: MIT, CC BY-NC-SA, etc)
