@@ -37,5 +37,5 @@ Este repositório inclui templates completos para estudo e uso livre, tanto para
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seuusuario/tailwind-exemplos.git
-cd tailwind-exemplos
+git clone https://github.com/vitorzonho/tailwindcss.git
+
